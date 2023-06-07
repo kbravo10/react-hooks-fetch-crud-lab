@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function QuestionItem({ question, onDeleteQuestion }) {
   const { id, prompt, answers, correctIndex } = question;
-  const [buttonPress, setButtonPress] = useState(false);
+
 
   const options = answers.map((answer, index) => (
     <option key={index} value={index}>
@@ -11,14 +11,13 @@ function QuestionItem({ question, onDeleteQuestion }) {
   ));
 
   function deleteQuestion() {
-    setButtonPress(!buttonPress);
     onDeleteQuestion(id);
   }
 
  
 
   function changeAnswer(event) {
-    fetch(`http://localhost:4000/questions/${id}`, {
+    fetch(`http://localhost:4000/questions/:${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
