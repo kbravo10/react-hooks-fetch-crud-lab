@@ -22,7 +22,6 @@ function QuestionItem({ question, onDeleteQuestion }) {
   }
 
   return (
-    <>
     <li>
       <h4>Question {id}</h4>
       <h5>Prompt: {prompt}</h5>
@@ -34,7 +33,6 @@ function QuestionItem({ question, onDeleteQuestion }) {
       </label>
       <button onClick={() => onDeleteQuestion(id)}>Delete Question</button>
     </li>
-    </>
   );
 }
 

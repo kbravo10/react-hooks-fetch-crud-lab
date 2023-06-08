@@ -12,13 +12,6 @@ function QuestionList() {
   );
 
   function handleDeleteQuestion(id) {
-   
-    fetch(`http://localhost:4000/questions/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.json()); 
     
     const newQuestionList = question.filter((ques) => {
       if (ques.id === parseInt(id)) {
@@ -27,6 +20,13 @@ function QuestionList() {
       return true;
     });
     setQues((question) => (question = newQuestionList));
+
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json());
   }
 
   return (
