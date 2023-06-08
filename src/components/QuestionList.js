@@ -12,19 +12,21 @@ function QuestionList() {
   );
 
   function handleDeleteQuestion(id) {
+   
+    fetch(`http://localhost:4000/questions/${id}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => res.json()); 
+    
     const newQuestionList = question.filter((ques) => {
       if (ques.id === parseInt(id)) {
         return false;
       }
       return true;
     });
-    setQues(newQuestionList);
-    fetch(`http://localhost:4000/questions/${id}`, {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then((res) => res.json());
+    setQues((question) => (question = newQuestionList));
   }
 
   return (
